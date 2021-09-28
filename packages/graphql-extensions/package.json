@@ -1,0 +1,31 @@
+{
+  "name": "testing-999-graphql-extensions",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "run-s clean build:prod",
+    "clean": "rimraf dist",
+    "dev": "cross-env NODE_ENV=development rollup -cw",
+    "build:prod": "cross-env NODE_ENV=production rollup -c",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@graphql-tools/merge": "^6.2.14",
+    "@last-rev/graphql-contentful-core": "0.1.10",
+    "@last-rev/rollup-config": "^0.0.4",
+    "graphql": "^15.5.1",
+    "graphql-tag": "^2.12.4",
+    "lodash": "^4.17.21",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.170",
+    "contentful": "^8.4.2"
+  }
+}

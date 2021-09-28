@@ -1,0 +1,37 @@
+{
+  "name": "testing-999-graphql-runner",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "run-s sync:cms gql:dev",
+    "gql:start": "last-rev gql-serve -c config",
+    "gql:dev": "nodemon -x \"last-rev gql-serve -c config\" -w config.js -w cms-sync -w ../graphql-extensions/dist",
+    "start": "run-s sync:cms gql:start",
+    "sync:cms": "last-rev cms-sync -d cms-sync"
+  },
+  "peerDependencies": {},
+  "dependencies": {
+    "@last-rev/cli": "^0.1.12",
+    "dotenv": "^10.0.0",
+    "npm-run-all": "^4.1.5",
+    "testing-999-graphql-extensions": "^0.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run test"
+    }
+  },
+  "lint-staged": {
+    "packages/*src/**/*.{js,jsx,json,css,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  }
+}
